@@ -1,0 +1,142 @@
+/* =====================================================
+   shared.css – Common styles for all ClaimEase pages
+   ===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:wght@400;600;700&display=swap');
+
+:root {
+  --sky: #87ceeb;
+  --sky-dark: #5ab4d6;
+  --primary: #0d6efd;
+  --teal: #0d9488;
+  --navy: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --light-bg: #f8fafc;
+}
+
+* { scroll-behavior: smooth; box-sizing: border-box; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+/* ===== NAVBAR ===== */
+.custom-navbar { padding: 10px 0; }
+.logo-brand { cursor: pointer; text-decoration: none; }
+.logo-brand h4 { font-family: 'Lora', serif; font-weight: 700; color: #1e293b; font-size: 20px; margin: 0; }
+.logo-icon {
+  width: 42px; height: 38px;
+  background: linear-gradient(135deg, #87ceeb, #0d6efd);
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+}
+.nav-link { font-weight: 500; color: #374151 !important; font-size: 14px; transition: color 0.2s; }
+.nav-link:hover, .nav-link.active-link { color: var(--primary) !important; }
+.custom-nav-btn {
+  border: 1.5px solid var(--primary) !important; color: var(--primary) !important;
+  border-radius: 8px !important; padding: 6px 18px !important;
+  font-weight: 600 !important; transition: all 0.2s;
+}
+.custom-nav-btn:hover { background: var(--primary) !important; color: #fff !important; }
+.sos-btn { background: #fff0f0; border-radius: 10px; padding: 2px 10px; }
+.sos-text { font-size: 11px; font-weight: 800; color: #dc2626; vertical-align: middle; }
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  background: linear-gradient(135deg, #87ceeb, #bae6fd);
+  padding: 60px 0; text-align: center;
+}
+.page-hero h1 { font-family: 'Lora', serif; font-weight: 700; font-size: 2.2rem; }
+.page-hero p { color: var(--muted); }
+
+/* ===== SECTION TITLE ===== */
+.section-title { font-family: 'Lora', serif; font-weight: 700; color: var(--navy); }
+
+/* ===== CARDS ===== */
+.feature-card {
+  border: 1px solid var(--border); background: #fff;
+  transition: all 0.25s; border-radius: 16px !important;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.1) !important;
+  border-color: var(--sky-dark);
+}
+.claim-card {
+  border: 1.5px solid var(--border); background: #fff;
+  border-radius: 16px !important; transition: all 0.25s;
+}
+.claim-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.1) !important;
+}
+
+/* ===== STATUS BADGES ===== */
+.status-badge {
+  display: inline-block; padding: 3px 12px;
+  border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase;
+}
+.badge-pending  { background: #fef9c3; color: #854d0e; }
+.badge-approved { background: #dcfce7; color: #166534; }
+.badge-rejected { background: #fee2e2; color: #991b1b; }
+.badge-processing { background: #dbeafe; color: #1e40af; }
+
+/* ===== PRIORITY ===== */
+.priority-high   { color: #dc2626; font-weight: 700; }
+.priority-medium { color: #d97706; font-weight: 700; }
+.priority-low    { color: #16a34a; font-weight: 700; }
+
+/* ===== TRACK STEPS ===== */
+.track-step {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding-bottom: 24px; position: relative;
+}
+.track-step:not(:last-child)::after {
+  content: ''; position: absolute; left: 19px;
+  top: 40px; bottom: 0; width: 2px; background: var(--border);
+}
+.track-step.done::after { background: #22c55e; }
+.step-dot {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.step-dot.done   { background: #dcfce7; color: #16a34a; }
+.step-dot.active { background: #dbeafe; color: #2563eb; }
+.step-dot.pending{ background: #f1f5f9; color: #94a3b8; }
+
+/* ===== HOSPITAL CARD ===== */
+.hospital-card {
+  border: 1.5px solid var(--border); border-radius: 14px;
+  padding: 18px; transition: all 0.2s;
+}
+.hospital-card:hover { border-color: var(--primary); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+
+/* ===== CONTACT BOX ===== */
+.contact-box {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 22px; border: 1.5px solid var(--border);
+  border-radius: 14px; margin-bottom: 16px; background: #fff; transition: all 0.2s;
+}
+.contact-box:hover { border-color: var(--sky-dark); box-shadow: 0 6px 20px rgba(0,0,0,.07); }
+.contact-icon { font-size: 26px; color: var(--primary); min-width: 34px; }
+.whatsapp-icon { color: #22c55e !important; }
+.contact-text small { display: block; color: var(--muted); font-size: 12px; }
+.contact-text a { font-weight: 700; color: var(--navy); text-decoration: none; font-size: 15px; }
+.contact-text a:hover { color: var(--primary); }
+
+/* ===== TOAST ===== */
+.toast-container { position: fixed; bottom: 28px; right: 28px; z-index: 9999; }
+.ce-toast {
+  background: var(--navy); color: #fff; border-radius: 12px;
+  padding: 14px 20px; font-size: 14px; display: flex; align-items: center;
+  gap: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  animation: slideIn .3s ease; min-width: 260px; margin-top: 10px;
+}
+.ce-toast.success { border-left: 4px solid #22c55e; }
+.ce-toast.error   { border-left: 4px solid #ef4444; }
+.ce-toast.info    { border-left: 4px solid #3b82f6; }
+@keyframes slideIn { from { opacity:0; transform:translateX(30px); } to { opacity:1; transform:translateX(0); } }
+
+/* ===== FOOTER ===== */
+footer a { transition: color 0.15s; }
+footer a:hover { color: var(--sky) !important; }
+
+/* ===== UTILITY ===== */
+.rounded-4 { border-radius: 1rem !important; }

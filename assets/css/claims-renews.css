@@ -1,0 +1,19 @@
+/* claims-renews.css */
+.action-icon-wrap {
+  width: 68px; height: 68px; border-radius: 18px;
+  display: flex; align-items: center; justify-content: center; font-size: 2rem;
+}
+.action-icon-wrap.blue   { background: #dbeafe; color: #2563eb; }
+.action-icon-wrap.green  { background: #dcfce7; color: #16a34a; }
+.action-icon-wrap.yellow { background: #fef9c3; color: #ca8a04; }
+
+.action-btn  { border-radius: 10px; font-weight: 600; }
+.close-btn   { border-radius: 8px; }
+.form-header { border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; }
+
+.claims-table thead { background: #f8fafc; }
+.claims-table thead th {
+  font-size: 11px; color: #64748b; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.5px;
+}
+.claims-table tbody tr:hover { background: #f8fafc; }

@@ -1,0 +1,43 @@
+/* insurance.css */
+.discount-banner {
+  background: linear-gradient(90deg, #0ea5e9, #0d6efd);
+  color: #fff; border-radius: 10px; padding: 10px 22px;
+  font-weight: 600; font-size: 14px;
+}
+.action-btn { border-radius: 10px; font-weight: 600; }
+
+/* Member Cards */
+.member-card {
+  border: 2px solid #e2e8f0; border-radius: 14px;
+  padding: 18px 10px; cursor: pointer; transition: all 0.2s; background: #fff;
+}
+.member-card:hover { border-color: #5ab4d6; background: #f0f9ff; }
+.member-card.selected { border-color: #0d6efd; background: #eff6ff; }
+.member-card .member-icon { font-size: 2.2rem; color: #94a3b8; transition: color 0.2s; }
+.member-card.selected .member-icon { color: #2563eb; }
+.member-label { font-size: 13px; font-weight: 600; margin-top: 8px; }
+
+/* Plan Cards */
+.plan-card { transition: all 0.25s; }
+.plan-card.gold { transform: scale(1.03); }
+.plan-card.silver { border-top: 4px solid #94a3b8 !important; }
+.plan-card.gold    { border-top: 4px solid #f59e0b !important; }
+.plan-card.platinum{ border-top: 4px solid #7c3aed !important; }
+.plan-price  { font-size: 2rem; font-weight: 800; margin: 8px 0; }
+.plan-freq   { font-size: 14px; font-weight: 400; }
+.silver-price   { color: #475569; }
+.gold-price     { color: #d97706; }
+.platinum-price { color: #7c3aed; }
+.plan-features li { font-size: 13px; margin-bottom: 6px; }
+.popular-badge {
+  display: inline-block; background: #fef3c7; color: #92400e;
+  font-size: 11px; font-weight: 700; padding: 3px 12px;
+  border-radius: 20px; margin-bottom: 6px;
+}
+
+/* Confirm Icon */
+.confirm-icon {
+  width: 70px; height: 70px; background: #dcfce7; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; color: #16a34a;
+}

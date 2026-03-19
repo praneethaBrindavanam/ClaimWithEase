@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Claims &amp; Renews – Claim Ease</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/claim-ease.png"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="assets/css/shared.css" rel="stylesheet"/>
+  <link href="assets/css/claims-renews.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <main>
+    <!-- Hero -->
+    <section class="page-hero">
+      <h1 class="fw-bold mb-2">Claims &amp; Renews</h1>
+      <p>Submit, track, and manage your insurance claims — all in one place.</p>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+
+        <!-- Action Cards -->
+        <div class="row justify-content-center g-4 mb-5">
+          <div class="col-md-4">
+            <div class="claim-card text-center p-4 shadow-sm h-100">
+              <div class="action-icon-wrap blue mx-auto mb-3"><i class="bi bi-plus-circle"></i></div>
+              <h5 class="section-title fs-6">Initiate Claim</h5>
+              <p class="text-muted small">Start your new claim process quickly and efficiently.</p>
+              <button class="btn btn-primary mt-2 px-4 action-btn" onclick="showSec('initiate-form')">Initiate Now</button>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="claim-card text-center p-4 shadow-sm h-100">
+              <div class="action-icon-wrap green mx-auto mb-3"><i class="bi bi-search"></i></div>
+              <h5 class="section-title fs-6">Track Claim</h5>
+              <p class="text-muted small">Monitor the status of your existing claims in real-time.</p>
+              <button class="btn btn-success mt-2 px-4 action-btn" onclick="showSec('track-form')">Track Now</button>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="claim-card text-center p-4 shadow-sm h-100">
+              <div class="action-icon-wrap yellow mx-auto mb-3"><i class="bi bi-arrow-clockwise"></i></div>
+              <h5 class="section-title fs-6">Renew Policy</h5>
+              <p class="text-muted small">Renew your existing policy before it lapses.</p>
+              <button class="btn btn-warning mt-2 px-4 action-btn text-white" onclick="showSec('renew-form')">Renew Now</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- INITIATE FORM -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4 d-none" id="initiate-form">
+          <div class="card-body p-4">
+            <div class="form-header d-flex justify-content-between align-items-center mb-4">
+              <h5 class="mb-0 section-title fs-6"><i class="bi bi-plus-circle text-primary me-2"></i>Submit a New Claim</h5>
+              <button class="btn btn-sm btn-outline-secondary close-btn" onclick="hideSec('initiate-form')"><i class="bi bi-x"></i> Close</button>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Policy Number <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="claimPolicy" placeholder="e.g. CE-2024-XXXXX"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Patient Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="claimPatient" placeholder="Full name"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Claim Type <span class="text-danger">*</span></label>
+                <select class="form-select" id="claimType">
+                  <option value="">Select type...</option>
+                  <option>Hospitalisation</option>
+                  <option>Surgery</option>
+                  <option>Accident</option>
+                  <option>Critical Illness</option>
+                  <option>Maternity</option>
+                  <option>Outpatient / OPD</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Claim Amount (₹) <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" id="claimAmount" placeholder="e.g. 50000"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Hospital Name <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="claimHospital" placeholder="Hospital / clinic name"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Date of Admission</label>
+                <input type="date" class="form-control" id="claimDate"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="claimEmail" placeholder="your@email.com"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Phone <span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" id="claimPhone" placeholder="10-digit mobile"/>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold">Description</label>
+                <textarea class="form-control" id="claimDesc" rows="3" placeholder="Brief description of condition and reason for claim..."></textarea>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Priority Level</label>
+                <select class="form-select" id="claimPriority">
+                  <option value="Low">🟢 Low – Routine claim</option>
+                  <option value="Medium" selected>🟡 Medium – Standard claim</option>
+                  <option value="High">🔴 High – Urgent / Critical</option>
+                </select>
+              </div>
+            </div>
+            <div class="mt-4 d-flex gap-3">
+              <button class="btn btn-primary px-5 action-btn" onclick="submitClaim()"><i class="bi bi-send me-2"></i>Submit Claim</button>
+              <button class="btn btn-outline-secondary action-btn" onclick="hideSec('initiate-form')">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRACK FORM -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4 d-none" id="track-form">
+          <div class="card-body p-4">
+            <div class="form-header d-flex justify-content-between align-items-center mb-4">
+              <h5 class="mb-0 section-title fs-6"><i class="bi bi-search text-success me-2"></i>Track Your Claim</h5>
+              <button class="btn btn-sm btn-outline-secondary close-btn" onclick="hideSec('track-form')"><i class="bi bi-x"></i> Close</button>
+            </div>
+            <div class="row g-3 align-items-end">
+              <div class="col-md-5">
+                <label class="form-label fw-semibold">Claim ID</label>
+                <input type="text" class="form-control" id="trackId" placeholder="e.g. CLM-001"/>
+              </div>
+              <div class="col-md-5">
+                <label class="form-label fw-semibold">OR Policy Number</label>
+                <input type="text" class="form-control" id="trackPolicy" placeholder="e.g. CE-2024-10011"/>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-success w-100 action-btn" onclick="trackClaim()"><i class="bi bi-search me-1"></i>Search</button>
+              </div>
+            </div>
+            <div id="trackResult" class="mt-4 d-none"></div>
+          </div>
+        </div>
+
+        <!-- RENEW FORM -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4 d-none" id="renew-form">
+          <div class="card-body p-4">
+            <div class="form-header d-flex justify-content-between align-items-center mb-4">
+              <h5 class="mb-0 section-title fs-6"><i class="bi bi-arrow-clockwise text-warning me-2"></i>Renew Your Policy</h5>
+              <button class="btn btn-sm btn-outline-secondary close-btn" onclick="hideSec('renew-form')"><i class="bi bi-x"></i> Close</button>
+            </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Policy Number <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" id="renewPolicy" placeholder="Enter your policy number"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Date of Birth <span class="text-danger">*</span></label>
+                <input type="date" class="form-control" id="renewDob"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Email <span class="text-danger">*</span></label>
+                <input type="email" class="form-control" id="renewEmail" placeholder="name@example.com"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Phone <span class="text-danger">*</span></label>
+                <input type="tel" class="form-control" id="renewPhone" placeholder="10-digit mobile"/>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Renewal Plan</label>
+                <select class="form-select" id="renewPlan">
+                  <option>Silver – ₹2L Coverage (₹4,999/yr)</option>
+                  <option selected>Gold – ₹5L Coverage (₹8,999/yr)</option>
+                  <option>Platinum – ₹10L Coverage (₹14,999/yr)</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Payment Method</label>
+                <select class="form-select" id="renewPayment">
+                  <option>UPI</option>
+                  <option>Net Banking</option>
+                  <option>Credit / Debit Card</option>
+                </select>
+              </div>
+            </div>
+            <div class="mt-4 d-flex gap-3">
+              <button class="btn btn-warning text-white px-5 action-btn" onclick="submitRenewal()"><i class="bi bi-check-circle me-2"></i>Confirm &amp; Renew</button>
+              <button class="btn btn-outline-secondary action-btn" onclick="hideSec('renew-form')">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ALL CLAIMS TABLE -->
+        <div class="card border-0 shadow-sm rounded-4">
+          <div class="card-body p-4">
+            <div class="d-flex align-items-center justify-content-between mb-3 flex-wrap gap-2">
+              <h5 class="mb-0 section-title fs-6"><i class="bi bi-table me-2 text-primary"></i>All Claims</h5>
+              <div class="d-flex gap-2 flex-wrap">
+                <select class="form-select form-select-sm" id="filterStatus" onchange="renderClaimsTable()" style="width:auto;">
+                  <option value="">All Status</option>
+                  <option>Pending</option><option>Processing</option>
+                  <option>Approved</option><option>Rejected</option>
+                </select>
+                <select class="form-select form-select-sm" id="filterPriority" onchange="renderClaimsTable()" style="width:auto;">
+                  <option value="">All Priority</option>
+                  <option>High</option><option>Medium</option><option>Low</option>
+                </select>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table align-middle claims-table">
+                <thead>
+                  <tr>
+                    <th>Claim ID</th><th>Patient</th><th>Type</th>
+                    <th>Amount</th><th>Priority</th><th>Status</th>
+                    <th>Date</th><th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="claimsBody"></tbody>
+              </table>
+            </div>
+            <p class="text-muted text-center d-none" id="noClaimsMsg" style="padding:20px 0;">No claims found. Submit your first claim above!</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Claim Detail Modal -->
+  <div class="modal fade" id="claimDetailModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-4 border-0 shadow">
+        <div class="modal-header border-0">
+          <h5 class="modal-title section-title fs-6" id="claimDetailTitle">Claim Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="claimDetailBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/shared.js"></script>
+  <script src="assets/js/claims-renews.js"></script>
+</body>
+</html>
